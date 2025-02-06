@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* Reset default browser styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* General body styling */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #f4f4f9;
+    color: #333;
+    padding: 20px;
+}
+
+/* Header styling */
+header {
+    background: #007bff;
+    color: white;
+    padding: 10px 0;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+header h1 {
+    font-size: 24px;
+}
+
+/* Main content styling */
+main {
+    max-width: 1200px;
+    margin: 0 auto;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Form styling */
+form {
+    margin-top: 20px;
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #333;
+}
+
+form input,
+form select,
+form textarea {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+form button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    width: 100%;
+}
+
+form button:hover {
+    background-color: #0056b3;
+}
+
+/* Button styling for actions */
+.action-button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+    margin-right: 5px;
+    display: inline-block; /* Ensure links are displayed as buttons */
+}
+
+.action-button:hover {
+    background-color: #0056b3;
+}
+
+/* Styling for pasien/create.ejs */
+.create-pasien-page h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.create-pasien-page form {
+    max-width: 600px;
+    margin: 0 auto;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.create-pasien-page form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #333;
+}
+
+.create-pasien-page form input,
+.create-pasien-page form textarea {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.create-pasien-page form button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    width: 100%;
+}
+
+.create-pasien-page form button:hover {
+    background-color: #0056b3;
+}
+    </style>
+</head>
+<body>
+    <h2>Tambah Pasien</h2>
+<form action="/pasien/store" method="POST">
+    <label for="no_rm">No. RM:</label>
+    <input type="text" name="no_rm" id="no_rm" required>
+
+    <label for="ktp">No. KTP:</label>
+    <input type="number" name="ktp" id="ktp" required>
+
+    <label for="nama_pasien">Nama Pasien:</label>
+    <input type="text" name="nama_pasien" id="nama_pasien" required>
+
+    <label for="tgl_lahir">Tanggal Lahir:</label>
+    <input type="date" name="tgl_lahir" id="tgl_lahir" required>
+
+    <label for="alamat">Alamat:</label>
+    <textarea name="alamat" id="alamat" required></textarea>
+
+    <label for="tinggi">Tinggi (cm):</label>
+    <input type="number" name="tinggi" id="tinggi" required>
+
+    <label for="berat">Berat (kg):</label>
+    <input type="number" name="berat" id="berat" required>
+
+    <label for="ibu_kandung">Ibu Kandung:</label>
+    <input type="text" name="ibu_kandung" id="ibu_kandung" required>
+
+    <button type="submit">Simpan</button>
+</form>
+</body>
+</html>

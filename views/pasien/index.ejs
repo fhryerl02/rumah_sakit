@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* Reset default browser styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* General body styling */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #f4f4f9;
+    color: #333;
+    padding: 20px;
+}
+
+/* Header styling */
+header {
+    background: #007bff;
+    color: white;
+    padding: 10px 0;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+header h1 {
+    font-size: 24px;
+}
+
+/* Main content styling */
+main {
+    max-width: 1200px;
+    margin: 0 auto;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Table styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table th,
+table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+table th {
+    background-color: #007bff;
+    color: white;
+}
+
+table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+table tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Link styling */
+a {
+    color: #007bff;
+    text-decoration: none;
+    margin-right: 5px;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Button styling for actions */
+.action-button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+    margin-right: 5px;
+    display: inline-block; /* Ensure links are displayed as buttons */
+}
+
+.action-button:hover {
+    background-color: #0056b3;
+}
+
+/* Button styling for delete */
+.delete-button {
+    background-color: #dc3545;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+    margin-right: 5px;
+    display: inline-block; /* Ensure links are displayed as buttons */
+}
+
+.delete-button:hover {
+    background-color: #c82333;
+}
+
+/* Styling for pasien/index.ejs */
+.pasien-page h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.pasien-page a.action-button {
+    margin-bottom: 20px;
+    display: inline-block;
+}
+
+.pasien-page table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.pasien-page table th,
+.pasien-page table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.pasien-page table th {
+    background-color: #007bff;
+    color: white;
+}
+
+.pasien-page table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.pasien-page table tr:hover {
+    background-color: #f1f1f1;
+}
+
+.pasien-page table td a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.pasien-page table td a:hover {
+    text-decoration: underline;
+}
+    </style>
+</head>
+<body>
+    <h2>Data Pasien</h2>
+<a href="/pasien/create">Tambah Pasien</a>
+<table>
+    <thead>
+        <tr>
+            <th>No. RM</th>
+            <th>No. KTP</th>
+            <th>Nama Pasien</th>
+            <th>Tanggal Lahir</th>
+            <th>Alamat</th>
+            <th>Tinggi (cm)</th>
+            <th>Berat (kg)</th>
+            <th>Ibu Kandung</th>
+            <th>Aksi</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% pasien.forEach(p => { %>
+            <tr>
+                <td><%= p.no_rm %></td>
+                <td><%= p.ktp %></td>
+                <td><%= p.nama_pasien %></td>
+                <td><%= p.tgl_lahir %></td>
+                <td><%= p.alamat %></td>
+                <td><%= p.tinggi %></td>
+                <td><%= p.berat %></td>
+                <td><%= p.ibu_kandung %></td>
+                <td>
+                    <a href="/pasien/edit/<%= p.no_rm %>">Edit</a>
+                    <a href="/pasien/delete/<%= p.no_rm %>">Hapus</a>
+                </td>
+            </tr>
+        <% }) %>
+    </tbody>
+</table>
+</body>
+</html>
+

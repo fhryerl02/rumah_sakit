@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* Reset default browser styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* General body styling */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #f4f4f9;
+    color: #333;
+    padding: 20px;
+}
+
+/* Header styling */
+header {
+    background: #007bff;
+    color: white;
+    padding: 10px 0;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+header h1 {
+    font-size: 24px;
+}
+
+/* Main content styling */
+main {
+    max-width: 1200px;
+    margin: 0 auto;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Table styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table th,
+table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+table th {
+    background-color: #007bff;
+    color: white;
+}
+
+table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+table tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Form styling */
+form {
+    margin-top: 20px;
+}
+
+form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+form input,
+form select,
+form textarea {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+form button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color: #0056b3;
+}
+
+/* Link styling */
+a {
+    color: #007bff;
+    text-decoration: none;
+    margin-right: 5px;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Button styling for actions */
+.action-button {
+    background-color: #007bff;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+    margin-right: 5px;
+}
+
+.action-button:hover {
+    background-color: #0056b3;
+}
+
+/* Button styling for delete */
+.delete-button {
+    background-color: #dc3545;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.delete-button:hover {
+    background-color: #c82333;
+}
+    </style>
+</head>
+<body>
+    <a href="/pegawai/create">Tambah Pegawai</a>
+<table>
+    <thead>
+        <tr>
+            <th>ID Pegawai</th>
+            <th>Nama Pegawai</th>
+            <th>Status Pegawai</th>
+            <th>Gaji</th>
+            <th>Aksi</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% pegawai.forEach(p => { %>
+            <tr>
+                <td><%= p.id_pegawai %></td>
+                <td><%= p.nama_pegawai %></td>
+                <td><%= p.status_pegawai %></td>
+                <td><%= p.gaji %></td>
+                <td>
+                    <a href="/pegawai/edit/<%= p.id_pegawai %>">Edit</a>
+                    <a href="/pegawai/delete/<%= p.id_pegawai %>">Hapus</a>
+                </td>
+            </tr>
+        <% }) %>
+    </tbody>
+</table>
+</body>
+</html>

@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* Reset default browser styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* General body styling */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #f4f4f9;
+    color: #333;
+    padding: 20px;
+}
+
+/* Header styling */
+header {
+    background: #007bff;
+    color: white;
+    padding: 10px 0;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+header h1 {
+    font-size: 24px;
+}
+
+/* Main content styling */
+main {
+    max-width: 1200px;
+    margin: 0 auto;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Form styling */
+form {
+    margin-top: 20px;
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #333;
+}
+
+form input,
+form select,
+form textarea {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+form button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    width: 100%;
+}
+
+form button:hover {
+    background-color: #0056b3;
+}
+
+/* Button styling for actions */
+.action-button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+    margin-right: 5px;
+    display: inline-block; /* Ensure links are displayed as buttons */
+}
+
+.action-button:hover {
+    background-color: #0056b3;
+}
+
+/* Button styling for delete */
+.delete-button {
+    background-color: #dc3545;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+    margin-right: 5px;
+    display: inline-block; /* Ensure links are displayed as buttons */
+}
+
+.delete-button:hover {
+    background-color: #c82333;
+}
+
+/* Styling for pembayaran/create.ejs */
+.create-pembayaran-page h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.create-pembayaran-page a.action-button {
+    margin-bottom: 20px;
+    display: inline-block;
+}
+
+.create-pembayaran-page form {
+    max-width: 600px;
+    margin: 0 auto;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.create-pembayaran-page form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #333;
+}
+
+.create-pembayaran-page form input,
+.create-pembayaran-page form select {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.create-pembayaran-page form button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    width: 100%;
+}
+
+.create-pembayaran-page form button:hover {
+    background-color: #0056b3;
+}
+    </style>
+</head>
+<body>
+    <h2>Edit Pembayaran</h2>
+<form action="/pembayaran/update/<%= pembayaran.id_pembayaran %>" method="POST">
+    <label for="id_pembayaran">ID Pembayaran:</label>
+    <input type="text" name="id_pembayaran" id="id_pembayaran" value="<%= pembayaran.id_pembayaran %>" readonly>
+
+    <label for="no_antrian">No. Antrian:</label>
+    <select name="no_antrian" id="no_antrian" required>
+        <% if (antri && Array.isArray(antri)) { %>
+            <% antri.forEach(a => { %>
+                <option value="<%= a.no_antrian %>" <%= a.no_antrian === pembayaran.no_antrian ? 'selected' : '' %>><%= a.no_antrian %> - <%= a.tanggal %> <%= a.jam %></option>
+            <% }) %>
+        <% } else { %>
+            <option value="">Tidak ada antrian tersedia</option>
+        <% } %>
+    </select>
+
+    <label for="tipe_pembayaran">Tipe Pembayaran:</label>
+    <input type="text" name="tipe_pembayaran" id="tipe_pembayaran" value="<%= pembayaran.tipe_pembayaran %>" required>
+
+    <label for="nama_instansi">Nama Instansi:</label>
+    <input type="text" name="nama_instansi" id="nama_instansi" value="<%= pembayaran.nama_instansi %>" required>
+
+    <button type="submit">Simpan</button>
+</form>
+</body>
+</html>
